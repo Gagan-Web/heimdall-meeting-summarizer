@@ -3,12 +3,105 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Electron</title>
+    <title>Heimdall Meeting Recorder</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background: linear-gradient(135deg, #ececef 0%, #a79eb0 100%);
+      }
+
+      .container {
+        background: white;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        text-align: center;
+      }
+
+      h1 {
+        color: #333;
+        margin-bottom: 30px;
+      }
+
+      .controls {
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+      }
+
+      button {
+        padding: 12px 30px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-weight: 600;
+      }
+
+      #startBtn {
+        background-color: #10b981;
+        color: white;
+      }
+
+      #startBtn:hover:not(:disabled) {
+        background-color: #059669;
+        transform: translateY(-2px);
+      }
+
+      #stopBtn {
+        background-color: #ef4444;
+        color: white;
+      }
+
+      #stopBtn:hover:not(:disabled) {
+        background-color: #dc2626;
+        transform: translateY(-2px);
+      }
+
+      button:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      #status {
+        margin-top: 20px;
+        padding: 10px;
+        border-radius: 5px;
+        font-weight: 500;
+      }
+
+      .status-idle {
+        background-color: #f3f4f6;
+        color: #6b7280;
+      }
+
+      .status-recording {
+        background-color: #fef3c7;
+        color: #92400e;
+      }
+
+      .status-error {
+        background-color: #fee2e2;
+        color: #991b1b;
+      }
+    </style>
   </head>
   <body>
-    <h1>heimdall</h1>
-    <button id="startBtn">Start</button>
-    <button id="stopBtn">Stop</button>
-    <script type="module" src="./renderer/index.js"></script>
+    <div class="container">
+      <h1>Heimdall Recorder</h1>
+      <div class="controls">
+        <button id="startBtn">Start Recording</button>
+        <button id="stopBtn" disabled>Stop Recording</button>
+      </div>
+      <div id="status" class="status-idle">Ready to record</div>
+    </div>
+
+    <script src="./renderer/app.js"></script>
   </body>
 </html>
