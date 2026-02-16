@@ -17,4 +17,5 @@ Thumbs.db
 
 # 4. Logs and temporary files
 *.log
-npm-debug.log*
+npm-debug.log*  
+electron/node_modules/

@@ -9,11 +9,11 @@ let ffmpegProcess = null;
 
 function startRecording() {
     if (ffmpegProcess) {
-        console.log("Already recording");
-        return;
+        console.log("Already recording")
+        return { success: false, messege: "already recording" };
     }
 
-    console.log("Recording...");
+    console.log("Starting recording...");
 
     ffmpegProcess = spawn(
         "ffmpeg",
@@ -42,18 +42,18 @@ function startRecording() {
 function stopRecording() {
     if (!ffmpegProcess) {
         console.log("Not recording");
-        return;
+        return { success: false, messege: "Not recording" };
     }
 
     console.log(" Recording stopped");
     ffmpegProcess.stdin.write("q");
     ffmpegProcess = null;
+
+    return { success: true, messege: "Recording stoped" }
 }
 
-// TEST
-startRecording();
-// setTimeout(stopRecording, 20000);
-process.on("SIGINT", () => {
-    stopRecording();
-    process.exit();
-});
+// process.on("SIGINT", () => {
+//     stopRecording();
+//     process.exit();
+// });
+module.exports = { startRecording, stopRecording }
