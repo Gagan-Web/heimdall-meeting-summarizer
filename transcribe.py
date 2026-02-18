@@ -1,8 +1,10 @@
 from faster_whisper import WhisperModel
 from datetime import datetime
 
+print("transcription.py has been sucessfully callled")
+
 # audio_file = "./sound-recorder/output.wav"
-audio_file = "./sound-recorder/output.wav"
+audio_file = "D:\BIG ONE\heimdall-meeting-summarizer\electron\output.wav"
 output_file = "./meeting.txt"
 
 print("Transcribing...")

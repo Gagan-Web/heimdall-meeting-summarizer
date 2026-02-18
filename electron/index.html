@@ -4,103 +4,52 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Heimdall Meeting Recorder</title>
-    <style>
-      body {
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
-        background: linear-gradient(135deg, #ececef 0%, #a79eb0 100%);
-      }
-
-      .container {
-        background: white;
-        padding: 40px;
-        border-radius: 10px;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-        text-align: center;
-      }
-
-      h1 {
-        color: #333;
-        margin-bottom: 30px;
-      }
-
-      .controls {
-        display: flex;
-        gap: 15px;
-        justify-content: center;
-      }
-
-      button {
-        padding: 12px 30px;
-        font-size: 16px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        font-weight: 600;
-      }
-
-      #startBtn {
-        background-color: #10b981;
-        color: white;
-      }
-
-      #startBtn:hover:not(:disabled) {
-        background-color: #059669;
-        transform: translateY(-2px);
-      }
-
-      #stopBtn {
-        background-color: #ef4444;
-        color: white;
-      }
-
-      #stopBtn:hover:not(:disabled) {
-        background-color: #dc2626;
-        transform: translateY(-2px);
-      }
-
-      button:disabled {
-        opacity: 0.5;
-        cursor: not-allowed;
-      }
-
-      #status {
-        margin-top: 20px;
-        padding: 10px;
-        border-radius: 5px;
-        font-weight: 500;
-      }
-
-      .status-idle {
-        background-color: #f3f4f6;
-        color: #6b7280;
-      }
-
-      .status-recording {
-        background-color: #fef3c7;
-        color: #92400e;
-      }
-
-      .status-error {
-        background-color: #fee2e2;
-        color: #991b1b;
-      }
-    </style>
+    <!-- <link href="/src/style.css" rel="stylesheet" /> -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   </head>
   <body>
-    <div class="container">
-      <h1>Heimdall Recorder</h1>
-      <div class="controls">
-        <button id="startBtn">Start Recording</button>
-        <button id="stopBtn" disabled>Stop Recording</button>
+    <div class="container border-black-1px">
+      <h1 class="text-4xl bold">Heimdall Recorder</h1>
+      <div class="controls flex gap-4 w-auto mx-1px">
+        <button
+          id="startBtn"
+          class="flex items-center gap-3 px-12 py-2 border-1 border-[#BBBBBB] bg-[#F2F1F1] text-black text-[1rem] rounded-xl cursor-pointer"
+        >
+          <span class="w-3.5 h-3.5 bg-[#C85C4A] rounded-full"></span>
+          Record
+        </button>
+
+        <button
+          id="stopBtn"
+          class="flex items-center gap-3 px-6 py-2 border-1 border-[#BBBBBB] bg-[#F2F1F1] text-black text-[1rem] rounded-xl cursor-pointer"
+        >
+          <span class="w-3.5 h-3.5 bg-[#C85C4A] rounded-sm"></span>
+          Stop recording
+        </button>
       </div>
-      <div id="status" class="status-idle">Ready to record</div>
+      <div
+        id="status"
+        class="status-idle w-sm items-center gap-3 px-12 py-2 border-1 border-[#BBBBBB] bg-[#F2F1F1] text-black text-[1rem] rounded-xl"
+      >
+        Ready to record
+      </div>
     </div>
+    <div class="flex gap-3">
+      <audio controls></audio>
+      <button
+        class="border-1 border-[#BBBBBB] px-3 py-xl bg-black text-white rounded-xl"
+      >
+        analyze
+      </button>
+    </div>
+
+    <textarea
+      id="codeInput"
+      class="border-1 border-[#BBBBBB] bg-[#F2F1F1] w-sm rounded-xl"
+      disabled
+    >
+summary of the metting here...</textarea
+    >
 
     <script src="./renderer/app.js"></script>
   </body>
