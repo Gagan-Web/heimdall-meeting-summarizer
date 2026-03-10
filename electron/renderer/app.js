@@ -1,12 +1,12 @@
 const startBtn = document.getElementById('startBtn')
 const stopBtn = document.getElementById('stopBtn')
 const statusDiv = document.getElementById('status')
+const analyzeBtn = document.getElementById('analyzeBtn')
 
 function updateStatus(message, type = 'idle') {
     statusDiv.textContent = message;
     statusDiv.className = `status-${type}`;
 }
-
 
 async function onStart() {
     try {
@@ -42,7 +42,7 @@ async function onStop() {
         startBtn.disabled = false;
 
         if (result.success) {
-            updateStatus("✅ Recording saved to output.wav", "idle");
+            updateStatus("Recording saved to output.wav", "idle");
         } else {
             updateStatus(result.message || "Failed to stop", "error");
         }
@@ -51,6 +51,16 @@ async function onStop() {
         console.error("Failed to stop recording:", err);
         updateStatus("Error: " + err.message, "error");
         startBtn.disabled = false;
+
+    }
+}
+
+async function analyzeBtn() {
+    try {
+        updateStatus("Sending Request to server", "analyzing")
+    } catch (err) {
+        console.error("Failed to send request to the server", err)
+        updateStatus("Error: " + err.message, "error")
 
     }
 }
