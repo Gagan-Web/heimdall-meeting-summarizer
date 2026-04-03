@@ -33,9 +33,9 @@ Record meetings, lectures, or live discussions and automatically generate notes 
 - faster-whisper Python package
 
 **Installation**
-- Install FFmpeg:
+- Install FFmpeg: https://github.com/BtbN/FFmpeg-Builds/releases
 - Windows: Download from ffmpeg.org or use winget install ffmpeg
-   - Open environment variable and add the location for ffmpeg in PATH
+   - Open environment variable and add the location for ffmpeg in PATH (i.e: ffmpeg/bin to path)
    - After cloning repo go to electron & run npm i then npm start to start the application
    - As of now it's not doing much but should be able to record yours and system audio
 
